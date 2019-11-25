@@ -3,7 +3,6 @@ extends PanelContainer
 var foregroundPicker: ColorPickerButton
 var backgroundPicker: ColorPickerButton
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	foregroundPicker = $Tools/FGBG/Foreground
 	backgroundPicker = $Tools/FGBG/Background
