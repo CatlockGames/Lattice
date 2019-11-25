@@ -22,6 +22,7 @@ func _input(event) -> void:
 		elif event.is_action_pressed("canvas_zoom_out"):
 			zoom_camera(zoom_step, event.position)
 
+# Zooms the camera by the given amount to the target location
 func zoom_camera(amount: float, target: Vector2) -> void:
 	offset += (-0.5 * get_viewport().size + target) * (zoom - zoom * amount)
 	zoom = zoom * amount
