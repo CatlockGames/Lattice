@@ -1,12 +1,12 @@
-extends Control
+extends Node2D
 
 var layers := []
 var size: Vector2
+var focus := false
 
 func _ready() -> void:
 	size = Vector2(16, 16)
-	layers.append(Layer.new(size))
-	layers[0].set_pixel(10, 10, Color.white)
+	layers.append(Layer.new(size, Color.white))
 
 func _process(delta) -> void:
 	# Update layers textures as needed
@@ -22,3 +22,9 @@ func _draw() -> void:
 	for layer in layers:
 		if layer.show:
 			draw_texture(layer.texture, Vector2.ZERO)
+
+func _on_ViewportContainer_mouse_entered() -> void:
+	focus = true
+
+func _on_ViewportContainer_mouse_exited() -> void:
+	focus = false
