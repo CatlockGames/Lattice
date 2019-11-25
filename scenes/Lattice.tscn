@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/PalettePanel.gd" type="Script" id=1]
 [ext_resource path="res://assets/graphics/add.png" type="Texture" id=2]
@@ -7,11 +7,10 @@
 [ext_resource path="res://assets/graphics/removePressed.png" type="Texture" id=5]
 [ext_resource path="res://assets/graphics/settings.png" type="Texture" id=6]
 [ext_resource path="res://assets/graphics/settingsPressed.png" type="Texture" id=7]
-[ext_resource path="res://assets/graphics/test.png" type="Texture" id=8]
-[ext_resource path="res://assets/graphics/selected.png" type="Texture" id=9]
+[ext_resource path="res://assets/graphics/selected.png" type="Texture" id=8]
 
 [sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 16, 16 )
 
 [node name="Lattice" type="Control"]
@@ -92,19 +91,19 @@ split_offset = -150
 
 [node name="Center" type="VBoxContainer" parent="UI/MainPanel/Main/HSplitContainer"]
 editor/display_folded = true
-margin_right = 648.0
+margin_right = 651.0
 margin_bottom = 516.0
 size_flags_horizontal = 3
 
 [node name="ToolOptionsPanel" type="PanelContainer" parent="UI/MainPanel/Main/HSplitContainer/Center"]
 editor/display_folded = true
-margin_right = 648.0
+margin_right = 651.0
 margin_bottom = 28.0
 
 [node name="ToolOptions" type="HBoxContainer" parent="UI/MainPanel/Main/HSplitContainer/Center/ToolOptionsPanel"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 641.0
+margin_right = 644.0
 margin_bottom = 21.0
 
 [node name="Label" type="Label" parent="UI/MainPanel/Main/HSplitContainer/Center/ToolOptionsPanel/ToolOptions"]
@@ -115,13 +114,13 @@ text = "Tool Options"
 [node name="VSplitContainer" type="VSplitContainer" parent="UI/MainPanel/Main/HSplitContainer/Center"]
 editor/display_folded = true
 margin_top = 32.0
-margin_right = 648.0
+margin_right = 651.0
 margin_bottom = 516.0
 size_flags_vertical = 3
 split_offset = -100
 
 [node name="TabContainer" type="TabContainer" parent="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer"]
-margin_right = 648.0
+margin_right = 651.0
 margin_bottom = 344.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -141,7 +140,7 @@ size_flags_vertical = 3
 stretch = true
 
 [node name="Viewport" type="Viewport" parent="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer/TabContainer/Canvas"]
-size = Vector2( 640, 308 )
+size = Vector2( 643, 308 )
 handle_input_locally = false
 render_target_update_mode = 3
 
@@ -150,14 +149,14 @@ render_target_update_mode = 3
 [node name="AnimationPanel" type="PanelContainer" parent="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer"]
 editor/display_folded = true
 margin_top = 356.0
-margin_right = 648.0
+margin_right = 651.0
 margin_bottom = 484.0
 
 [node name="Animation" type="HBoxContainer" parent="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer/AnimationPanel"]
 editor/display_folded = true
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 641.0
+margin_right = 644.0
 margin_bottom = 121.0
 
 [node name="Label" type="Label" parent="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer/AnimationPanel/Animation"]
@@ -167,19 +166,19 @@ margin_bottom = 64.0
 text = "Animation"
 
 [node name="RightPanel" type="PanelContainer" parent="UI/MainPanel/Main/HSplitContainer"]
-margin_left = 660.0
+margin_left = 663.0
 margin_right = 926.0
 margin_bottom = 516.0
 
 [node name="VSplitContainer" type="VSplitContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 259.0
+margin_right = 256.0
 margin_bottom = 509.0
 split_offset = -300
 
 [node name="PalettePanel" type="PanelContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer"]
-margin_right = 252.0
+margin_right = 249.0
 margin_bottom = 162.0
 size_flags_vertical = 3
 script = ExtResource( 1 )
@@ -187,53 +186,53 @@ script = ExtResource( 1 )
 [node name="Palette" type="VBoxContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/PalettePanel"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 245.0
+margin_right = 242.0
 margin_bottom = 155.0
 
 [node name="Label" type="Label" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/PalettePanel/Palette"]
-margin_right = 238.0
+margin_right = 235.0
 margin_bottom = 14.0
 text = "Palette"
 
 [node name="HSeparator" type="HSeparator" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/PalettePanel/Palette"]
 margin_top = 18.0
-margin_right = 238.0
+margin_right = 235.0
 margin_bottom = 22.0
 
 [node name="Buttons" type="HBoxContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/PalettePanel/Palette"]
 margin_top = 26.0
-margin_right = 238.0
-margin_bottom = 48.0
+margin_right = 235.0
+margin_bottom = 46.0
 
 [node name="AddColor" type="TextureButton" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/PalettePanel/Palette/Buttons"]
 margin_right = 16.0
-margin_bottom = 22.0
+margin_bottom = 20.0
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 
 [node name="RemoveColor" type="TextureButton" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/PalettePanel/Palette/Buttons"]
 margin_left = 20.0
 margin_right = 36.0
-margin_bottom = 22.0
+margin_bottom = 20.0
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 5 )
 
 [node name="Settings" type="TextureButton" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/PalettePanel/Palette/Buttons"]
 margin_left = 40.0
 margin_right = 56.0
-margin_bottom = 22.0
+margin_bottom = 20.0
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 
 [node name="ColorPickerButton" type="ColorPickerButton" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/PalettePanel/Palette/Buttons"]
 margin_left = 60.0
-margin_right = 88.0
-margin_bottom = 22.0
-icon = ExtResource( 8 )
+margin_right = 85.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 25, 20 )
 
 [node name="Colors" type="ItemList" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/PalettePanel/Palette"]
-margin_top = 52.0
-margin_right = 238.0
+margin_top = 50.0
+margin_right = 235.0
 margin_bottom = 148.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -245,13 +244,13 @@ icon_mode = 0
 [node name="LayerPanel" type="PanelContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer"]
 editor/display_folded = true
 margin_top = 174.0
-margin_right = 252.0
+margin_right = 249.0
 margin_bottom = 502.0
 
 [node name="Label" type="Label" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/LayerPanel"]
 margin_left = 7.0
 margin_top = 157.0
-margin_right = 245.0
+margin_right = 242.0
 margin_bottom = 171.0
 text = "Layer Panel"
 
