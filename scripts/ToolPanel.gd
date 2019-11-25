@@ -16,7 +16,7 @@ func _on_Swap_pressed() -> void:
 	foregroundPicker.color = backgroundPicker.color
 	backgroundPicker.color = temp
 
-# Reverts colors do black and white default
+# Reverts colors to black and white default
 func _on_BW_pressed() -> void:
 	foregroundPicker.color = Color.black
 	backgroundPicker.color = Color.white
