@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/zoom.png-9b38f600ff3a11a74c924351f4c2ccad.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/graphics/zoom.png"
+dest_files=[ "res://.import/zoom.png-9b38f600ff3a11a74c924351f4c2ccad.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
