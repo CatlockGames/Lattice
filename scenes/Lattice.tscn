@@ -1,0 +1,164 @@
+[gd_scene format=2]
+
+[node name="Lattice" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="UI" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MenuPanel" type="PanelContainer" parent="UI"]
+margin_right = 1024.0
+margin_bottom = 34.0
+
+[node name="Menu" type="HBoxContainer" parent="UI/MenuPanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 27.0
+
+[node name="FileMenu" type="MenuButton" parent="UI/MenuPanel/Menu"]
+margin_right = 35.0
+margin_bottom = 20.0
+text = "File"
+
+[node name="EditMenu" type="MenuButton" parent="UI/MenuPanel/Menu"]
+margin_left = 39.0
+margin_right = 75.0
+margin_bottom = 20.0
+text = "Edit"
+
+[node name="ViewMenu" type="MenuButton" parent="UI/MenuPanel/Menu"]
+margin_left = 79.0
+margin_right = 121.0
+margin_bottom = 20.0
+text = "View"
+
+[node name="HelpMenu" type="MenuButton" parent="UI/MenuPanel/Menu"]
+margin_left = 125.0
+margin_right = 167.0
+margin_bottom = 20.0
+text = "Help"
+
+[node name="MainPanel" type="PanelContainer" parent="UI"]
+margin_top = 38.0
+margin_right = 1024.0
+margin_bottom = 568.0
+size_flags_vertical = 3
+
+[node name="Main" type="HBoxContainer" parent="UI/MainPanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 523.0
+
+[node name="ToolPanel" type="PanelContainer" parent="UI/MainPanel/Main"]
+margin_right = 80.0
+margin_bottom = 516.0
+
+[node name="Label" type="Label" parent="UI/MainPanel/Main/ToolPanel"]
+margin_left = 7.0
+margin_top = 251.0
+margin_right = 73.0
+margin_bottom = 265.0
+text = "Tool Panel"
+
+[node name="HSplitContainer" type="HSplitContainer" parent="UI/MainPanel/Main"]
+margin_left = 84.0
+margin_right = 1010.0
+margin_bottom = 516.0
+size_flags_horizontal = 3
+split_offset = -150
+
+[node name="Center" type="VBoxContainer" parent="UI/MainPanel/Main/HSplitContainer"]
+margin_right = 750.0
+margin_bottom = 516.0
+size_flags_horizontal = 3
+
+[node name="ToolOptionsPanel" type="PanelContainer" parent="UI/MainPanel/Main/HSplitContainer/Center"]
+margin_right = 750.0
+margin_bottom = 28.0
+
+[node name="ToolOptions" type="HBoxContainer" parent="UI/MainPanel/Main/HSplitContainer/Center/ToolOptionsPanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 743.0
+margin_bottom = 21.0
+
+[node name="Label" type="Label" parent="UI/MainPanel/Main/HSplitContainer/Center/ToolOptionsPanel/ToolOptions"]
+margin_right = 82.0
+margin_bottom = 14.0
+text = "Tool Options"
+
+[node name="VSplitContainer" type="VSplitContainer" parent="UI/MainPanel/Main/HSplitContainer/Center"]
+margin_top = 32.0
+margin_right = 750.0
+margin_bottom = 516.0
+size_flags_vertical = 3
+split_offset = -100
+
+[node name="TabContainer" type="TabContainer" parent="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer"]
+margin_right = 750.0
+margin_bottom = 344.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tab_align = 0
+drag_to_rearrange_enabled = true
+
+[node name="Canvas" type="ViewportContainer" parent="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer/TabContainer"]
+editor/display_folded = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="Viewport" type="Viewport" parent="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer/TabContainer/Canvas"]
+size = Vector2( 742, 308 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Camera2D" type="Camera2D" parent="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer/TabContainer/Canvas/Viewport"]
+
+[node name="AnimationPanel" type="PanelContainer" parent="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer"]
+margin_top = 356.0
+margin_right = 750.0
+margin_bottom = 484.0
+
+[node name="Animation" type="HBoxContainer" parent="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer/AnimationPanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 743.0
+margin_bottom = 121.0
+
+[node name="Label" type="Label" parent="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer/AnimationPanel/Animation"]
+margin_top = 50.0
+margin_right = 66.0
+margin_bottom = 64.0
+text = "Animation"
+
+[node name="RightPanel" type="PanelContainer" parent="UI/MainPanel/Main/HSplitContainer"]
+margin_left = 762.0
+margin_right = 926.0
+margin_bottom = 516.0
+
+[node name="InfoPanel" type="PanelContainer" parent="UI"]
+margin_top = 572.0
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="Info" type="HBoxContainer" parent="UI/InfoPanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 21.0
+
+[node name="Label" type="Label" parent="UI/InfoPanel/Info"]
+margin_right = 25.0
+margin_bottom = 14.0
+text = "Info"
