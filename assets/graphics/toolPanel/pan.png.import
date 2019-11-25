@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pen.png-b96a96e597372e71c977613b81519900.stex"
+path="res://.import/pan.png-f4a7d87816731e80c53aea4a9ed71a8f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/pen.png"
-dest_files=[ "res://.import/pen.png-b96a96e597372e71c977613b81519900.stex" ]
+source_file="res://assets/graphics/toolPanel/pan.png"
+dest_files=[ "res://.import/pan.png-f4a7d87816731e80c53aea4a9ed71a8f.stex" ]
 
 [params]
 

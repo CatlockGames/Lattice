@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/undo.png-14a03adbfd65df91cd3fcd2c497feb3b.stex"
+path="res://.import/settings.png-90f373bd37981459f280505828fa6613.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/undo.png"
-dest_files=[ "res://.import/undo.png-14a03adbfd65df91cd3fcd2c497feb3b.stex" ]
+source_file="res://assets/graphics/palette/settings.png"
+dest_files=[ "res://.import/settings.png-90f373bd37981459f280505828fa6613.stex" ]
 
 [params]
 

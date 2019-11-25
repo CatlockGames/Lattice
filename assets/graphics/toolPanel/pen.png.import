@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/removePressed.png-0d80282c0a66ac3b64a13120a0f2c8ca.stex"
+path="res://.import/pen.png-d7464031596fbbf65b30075f68808ca7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/removePressed.png"
-dest_files=[ "res://.import/removePressed.png-0d80282c0a66ac3b64a13120a0f2c8ca.stex" ]
+source_file="res://assets/graphics/toolPanel/pen.png"
+dest_files=[ "res://.import/pen.png-d7464031596fbbf65b30075f68808ca7.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/eraser.png-f95fb7197c8b8f127552db27521f52cc.stex"
+path="res://.import/settingsPressed.png-8960ca0d48d68e43ec18b13b90f7463d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/eraser.png"
-dest_files=[ "res://.import/eraser.png-f95fb7197c8b8f127552db27521f52cc.stex" ]
+source_file="res://assets/graphics/palette/settingsPressed.png"
+dest_files=[ "res://.import/settingsPressed.png-8960ca0d48d68e43ec18b13b90f7463d.stex" ]
 
 [params]
 
