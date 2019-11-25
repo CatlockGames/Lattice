@@ -29,5 +29,5 @@ func _on_Settings_pressed():
 func _on_Colors_item_selected(index):
 	var icon = $Palette/Colors.get_item_icon(index).get_data()
 	icon.lock()
-	foregroundPicker.color = icon.get_pixel(1, 1)
+	foregroundPicker.color = icon.get_pixel(0, 0)
 	icon.unlock()
