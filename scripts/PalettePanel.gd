@@ -2,7 +2,6 @@ extends PanelContainer
 
 var foregroundPicker: ColorPickerButton
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	foregroundPicker = find_parent("Main").find_node("Foreground")
 
