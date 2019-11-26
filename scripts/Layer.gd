@@ -13,9 +13,7 @@ func _init(size: Vector2, fill := Color(1, 1, 1, 0)) -> void:
 	texture = ImageTexture.new()
 	image.create(size.x, size.y, false, Image.FORMAT_RGBA8)
 	if fill != Color(1, 1, 1, 0):
-		image.lock()
 		image.fill(fill)
-		image.unlock()
 	texture.create_from_image(image, 0)
 	show = true
 	changed = false
