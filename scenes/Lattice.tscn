@@ -73,11 +73,13 @@ margin_right = 1017.0
 margin_bottom = 523.0
 
 [node name="ToolPanel" type="PanelContainer" parent="UI/MainPanel/Main"]
+editor/display_folded = true
 margin_right = 80.0
 margin_bottom = 516.0
 script = ExtResource( 1 )
 
 [node name="Tools" type="VBoxContainer" parent="UI/MainPanel/Main/ToolPanel"]
+editor/display_folded = true
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 73.0

@@ -1,5 +1,7 @@
 extends Node2D
 
+var foregroundPicker: ColorPickerButton
+
 var layers := []
 var current_layer_index := 0
 
@@ -9,6 +11,8 @@ var focus := false
 var prev_mouse_pos: Vector2
 
 func _ready() -> void:
+	foregroundPicker = find_parent("Main").find_node("Foreground")
+	
 	size = Vector2(64, 64)
 	layers.append(Layer.new(size, Color.white))
 
@@ -18,7 +22,7 @@ func _process(delta) -> void:
 	
 	# Draw pixels
 	if Input.is_action_pressed("tool_primary") && mouse_in_layer:
-		layers[current_layer_index].set_pixel(mouse_pos.x, mouse_pos.y, Color.black)
+		layers[current_layer_index].set_pixel(mouse_pos.x, mouse_pos.y, foregroundPicker.color)
 	
 	# Update layers textures as needed
 	for layer in layers:
