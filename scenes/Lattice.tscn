@@ -1,21 +1,22 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/ToolPanel.gd" type="Script" id=1]
 [ext_resource path="res://assets/graphics/toolPanel/swap.png" type="Texture" id=2]
 [ext_resource path="res://assets/graphics/toolPanel/bw.png" type="Texture" id=3]
-[ext_resource path="res://scripts/Canvas.gd" type="Script" id=4]
-[ext_resource path="res://scripts/Camera2D.gd" type="Script" id=5]
-[ext_resource path="res://scripts/PalettePanel.gd" type="Script" id=6]
-[ext_resource path="res://assets/graphics/Palette/add.png" type="Texture" id=7]
-[ext_resource path="res://assets/graphics/Palette/addPressed.png" type="Texture" id=8]
-[ext_resource path="res://assets/graphics/Palette/remove.png" type="Texture" id=9]
-[ext_resource path="res://assets/graphics/Palette/removePressed.png" type="Texture" id=10]
-[ext_resource path="res://assets/graphics/Palette/settings.png" type="Texture" id=11]
-[ext_resource path="res://assets/graphics/Palette/settingsPressed.png" type="Texture" id=12]
-[ext_resource path="res://assets/graphics/toolPanel/selected.png" type="Texture" id=13]
+[ext_resource path="res://assets/graphics/canvas/background.png" type="Texture" id=4]
+[ext_resource path="res://scripts/Canvas.gd" type="Script" id=5]
+[ext_resource path="res://scripts/Camera2D.gd" type="Script" id=6]
+[ext_resource path="res://scripts/PalettePanel.gd" type="Script" id=7]
+[ext_resource path="res://assets/graphics/Palette/add.png" type="Texture" id=8]
+[ext_resource path="res://assets/graphics/Palette/addPressed.png" type="Texture" id=9]
+[ext_resource path="res://assets/graphics/Palette/remove.png" type="Texture" id=10]
+[ext_resource path="res://assets/graphics/Palette/removePressed.png" type="Texture" id=11]
+[ext_resource path="res://assets/graphics/Palette/settings.png" type="Texture" id=12]
+[ext_resource path="res://assets/graphics/Palette/settingsPressed.png" type="Texture" id=13]
+[ext_resource path="res://assets/graphics/toolPanel/selected.png" type="Texture" id=14]
 
 [sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 region_rect = Rect2( 0, 0, 16, 16 )
 
 [node name="Lattice" type="Control"]
@@ -193,12 +194,19 @@ size = Vector2( 655, 308 )
 handle_input_locally = false
 render_target_update_mode = 3
 
+[node name="TransparentBackground" type="TextureRect" parent="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer/TabContainer/ViewportContainer/Viewport"]
+margin_right = 64.0
+margin_bottom = 64.0
+mouse_filter = 2
+texture = ExtResource( 4 )
+stretch_mode = 2
+
 [node name="Canvas" type="Node2D" parent="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer/TabContainer/ViewportContainer/Viewport"]
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 
 [node name="Camera2D" type="Camera2D" parent="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer/TabContainer/ViewportContainer/Viewport"]
 current = true
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 
 [node name="Control" type="Control" parent="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer/TabContainer"]
 visible = false
@@ -244,7 +252,7 @@ split_offset = -300
 margin_right = 237.0
 margin_bottom = 162.0
 size_flags_vertical = 3
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 
 [node name="Palette" type="VBoxContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/PalettePanel"]
 margin_left = 7.0
@@ -270,22 +278,22 @@ margin_bottom = 42.0
 [node name="AddColor" type="TextureButton" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/PalettePanel/Palette/Buttons"]
 margin_right = 16.0
 margin_bottom = 16.0
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 
 [node name="RemoveColor" type="TextureButton" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/PalettePanel/Palette/Buttons"]
 margin_left = 20.0
 margin_right = 36.0
 margin_bottom = 16.0
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 10 )
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 11 )
 
 [node name="Settings" type="TextureButton" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/PalettePanel/Palette/Buttons"]
 margin_left = 40.0
 margin_right = 56.0
 margin_bottom = 16.0
-texture_normal = ExtResource( 11 )
-texture_pressed = ExtResource( 12 )
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
 
 [node name="Colors" type="ItemList" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/PalettePanel/Palette"]
 margin_top = 46.0
