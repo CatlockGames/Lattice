@@ -138,8 +138,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
 margin_top = 32.0
-margin_right = -706.0
-margin_bottom = -272.0
+margin_right = -4.0
+margin_bottom = -4.0
 
 [node name="AnimationPanel" type="PanelContainer" parent="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer"]
 margin_top = 356.0
