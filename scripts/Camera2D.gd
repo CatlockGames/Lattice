@@ -31,7 +31,7 @@ func zoom_camera(amount: float, target: Vector2) -> void:
 	zoom *= amount
 	canvas.update_background(zoom)
 
-func reset() -> void:
+func zoom_fit() -> void:
 	offset = canvas.size / 2
 	var viewport_size := get_viewport_rect().size
 	var zoom_fit: float = canvas.size.y / viewport_size.y
