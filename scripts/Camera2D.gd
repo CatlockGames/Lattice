@@ -28,7 +28,7 @@ func _input(event) -> void:
 # Zooms the camera by the given amount to the target location
 func zoom_camera(amount: float, target: Vector2) -> void:
 	offset += (-0.5 * get_viewport().size + target) * (zoom - zoom * amount)
-	zoom = zoom * amount
+	zoom *= amount
 	canvas.update_background(zoom)
 
 func reset() -> void:
