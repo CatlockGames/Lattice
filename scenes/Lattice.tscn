@@ -148,7 +148,6 @@ margin_bottom = 516.0
 size_flags_horizontal = 3
 
 [node name="ToolOptionsPanel" type="PanelContainer" parent="UI/MainPanel/Main/HSplitContainer/Center"]
-editor/display_folded = true
 margin_right = 663.0
 margin_bottom = 28.0
 
@@ -327,7 +326,6 @@ margin_right = 244.0
 margin_bottom = 509.0
 
 [node name="InfoPanel" type="PanelContainer" parent="UI"]
-editor/display_folded = true
 margin_top = 572.0
 margin_right = 1024.0
 margin_bottom = 600.0

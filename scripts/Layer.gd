@@ -21,9 +21,10 @@ func _init(size: Vector2, fill := Color(1, 1, 1, 0)) -> void:
 # Sets the given pixel to the given color
 func set_pixel(x: int, y: int, color: Color) -> void:
 	image.lock()
-	image.set_pixel(x, y, color)
+	if color != image.get_pixel(x, y):
+		image.set_pixel(x, y, color)
+		changed = true
 	image.unlock()
-	changed = true
 
 # Updates the layers texture if any changes were made to its image
 func update_texture() -> void:
