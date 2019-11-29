@@ -2,6 +2,7 @@ extends Node2D
 
 var foregroundPicker: ColorPickerButton
 var background: TextureRect
+var background_scale: float
 
 var layers := []
 var current_layer_index := 0
@@ -14,9 +15,10 @@ var prev_mouse_pos: Vector2
 func _ready() -> void:
 	foregroundPicker = find_parent("Main").find_node("Foreground")
 	background = get_node("../TransparentBackground")
+	background_scale = 10
 	
 	size = Vector2(16, 16)
-	layers.append(Layer.new(size, Color(255, 0, 0, 0.5)))
+	layers.append(Layer.new(size))
 
 func _process(delta) -> void:
 	var mouse_pos = get_local_mouse_position()
@@ -39,15 +41,10 @@ func _draw() -> void:
 		if layer.show:
 			draw_texture(layer.texture, Vector2.ZERO)
 
-func update_background(zoom: float) -> void:
-	print(zoom)
-	var xy_ratio = size.x / size.y
-	var scale = Vector2(sqrt(size.y), sqrt(size.y))
-	var scale_factor = sqrt(size.y)
-	background.rect_scale = scale * zoom * scale_factor
-	scale.x *= xy_ratio
-	background.rect_size = scale / zoom / scale_factor
-	
+# Updates the transparent background grid
+func update_background(zoom: Vector2) -> void:
+	background.rect_scale = zoom * background_scale
+	background.rect_size = size / zoom / background_scale
 
 func _on_ViewportContainer_mouse_entered() -> void:
 	focus = true
