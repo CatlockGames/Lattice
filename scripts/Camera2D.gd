@@ -6,6 +6,7 @@ var canvas: Node2D
 
 func _ready() -> void:
 	canvas = get_node("../Canvas")
+	zoom_fit()
 
 func _input(event) -> void:
 	# Only affect canvas if in focus
@@ -27,4 +28,11 @@ func _input(event) -> void:
 # Zooms the camera by the given amount to the target location
 func zoom_camera(amount: float, target: Vector2) -> void:
 	offset += (-0.5 * get_viewport().size + target) * (zoom - zoom * amount)
-	zoom = zoom * amount
+	zoom *= amount
+	canvas.update_background(zoom)
+
+func zoom_fit() -> void:
+	offset = canvas.size / 2
+	var zoom_fit: float = canvas.size.y / get_viewport_rect().size.y
+	zoom = Vector2(zoom_fit, zoom_fit)
+	canvas.update_background(zoom)

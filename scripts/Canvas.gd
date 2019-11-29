@@ -1,6 +1,8 @@
 extends Node2D
 
 var foregroundPicker: ColorPickerButton
+var background: TextureRect
+var background_scale: float
 
 var layers := []
 var current_layer_index := 0
@@ -12,9 +14,11 @@ var prev_mouse_pos: Vector2
 
 func _ready() -> void:
 	foregroundPicker = find_parent("Main").find_node("Foreground")
+	background = get_node("../TransparentBackground")
+	background_scale = 10
 	
-	size = Vector2(64, 64)
-	layers.append(Layer.new(size, Color.white))
+	size = Vector2(16, 16)
+	layers.append(Layer.new(size))
 
 func _process(delta) -> void:
 	var mouse_pos = get_local_mouse_position()
@@ -32,15 +36,15 @@ func _process(delta) -> void:
 	prev_mouse_pos = mouse_pos
 
 func _draw() -> void:
-	# Draw transparent background texture
-	# TODO add checker pattern texture
-	# need to draw the texture and scale/tile based on canvas size
-	# draw_texture(background, Vector2.ZERO)
-	
 	# Draw layers
 	for layer in layers:
 		if layer.show:
 			draw_texture(layer.texture, Vector2.ZERO)
+
+# Updates the transparent background grid
+func update_background(zoom: Vector2) -> void:
+	background.rect_scale = zoom * background_scale
+	background.rect_size = size / zoom / background_scale
 
 func _on_ViewportContainer_mouse_entered() -> void:
 	focus = true
