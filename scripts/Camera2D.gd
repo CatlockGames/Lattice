@@ -6,7 +6,7 @@ var canvas: Node2D
 
 func _ready() -> void:
 	canvas = get_node("../Canvas")
-	reset()
+	zoom_fit()
 
 func _input(event) -> void:
 	# Only affect canvas if in focus
