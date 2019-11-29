@@ -15,8 +15,8 @@ func _ready() -> void:
 	foregroundPicker = find_parent("Main").find_node("Foreground")
 	background = get_node("../TransparentBackground")
 	
-	size = Vector2(64, 64)
-	layers.append(Layer.new(size))
+	size = Vector2(16, 16)
+	layers.append(Layer.new(size, Color(255, 0, 0, 0.5)))
 
 func _process(delta) -> void:
 	var mouse_pos = get_local_mouse_position()
@@ -40,12 +40,14 @@ func _draw() -> void:
 			draw_texture(layer.texture, Vector2.ZERO)
 
 func update_background(zoom: float) -> void:
-	var scale = Vector2(sqrt(size.x), sqrt(size.y))
-	background.rect_size = scale / zoom
-	background.rect_scale = scale * zoom
-	print(background.rect_size)
-	print(background.rect_scale)
-	print(" ")
+	print(zoom)
+	var xy_ratio = size.x / size.y
+	var scale = Vector2(sqrt(size.y), sqrt(size.y))
+	var scale_factor = sqrt(size.y)
+	background.rect_scale = scale * zoom * scale_factor
+	scale.x *= xy_ratio
+	background.rect_size = scale / zoom / scale_factor
+	
 
 func _on_ViewportContainer_mouse_entered() -> void:
 	focus = true
