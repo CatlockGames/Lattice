@@ -4,7 +4,8 @@ var foregroundPicker: ColorPickerButton
 var background: TextureRect
 var background_scale: float
 
-var layers := []
+var layers: VBoxContainer
+onready var layerScene = preload("res://scenes/Layer.tscn")
 var current_layer_index := 0
 
 var size: Vector2
@@ -18,18 +19,20 @@ func _ready() -> void:
 	background_scale = 10
 	
 	size = Vector2(16, 16)
-	layers.append(Layer.new(size))
+	layers = find_parent("Main").find_node("Layers")
+	_on_newLayer_pressed()
 
 func _process(delta) -> void:
+	update()
 	var mouse_pos = get_local_mouse_position()
 	var mouse_in_layer := Rect2(Vector2.ZERO, size).has_point(mouse_pos)
 	
 	# Draw pixels
 	if Input.is_action_pressed("tool_primary") && mouse_in_layer:
-		layers[current_layer_index].set_pixel(mouse_pos.x, mouse_pos.y, foregroundPicker.color)
+		layers.get_child(current_layer_index).set_pixel(mouse_pos.x, mouse_pos.y, foregroundPicker.color)
 	
 	# Update layers textures as needed
-	for layer in layers:
+	for layer in layers.get_children():
 		layer.update_texture()
 	
 	# Update prev mouse position
@@ -37,7 +40,7 @@ func _process(delta) -> void:
 
 func _draw() -> void:
 	# Draw layers
-	for layer in layers:
+	for layer in layers.get_children():
 		if layer.show:
 			draw_texture(layer.texture, Vector2.ZERO)
 
@@ -51,3 +54,14 @@ func _on_ViewportContainer_mouse_entered() -> void:
 
 func _on_ViewportContainer_mouse_exited() -> void:
 	focus = false
+
+func _on_newLayer_pressed():
+	var layer = layerScene.instance()
+	layers.add_child(layer)
+	current_layer_index = layers.get_child_count() - 1
+	layer.init(current_layer_index, size)
+
+func _on_removeLayer_pressed():
+	if layers.get_child_count() > 1:
+		layers.remove_child(layers.get_child(current_layer_index))
+		current_layer_index -= 1

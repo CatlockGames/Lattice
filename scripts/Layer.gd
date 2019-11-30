@@ -1,3 +1,4 @@
+extends HBoxContainer
 class_name Layer
 
 var image: Image
@@ -8,7 +9,8 @@ var changed: bool
 # Layer constructor
 # Creates a new layer with the given size
 # Optionally set the fill color, default to transparent
-func _init(size: Vector2, fill := Color(1, 1, 1, 0)) -> void:
+func init(index: int, size: Vector2, fill := Color(1, 1, 1, 0)) -> void:
+	$Name.text = "Layer %d" % index
 	image = Image.new()
 	texture = ImageTexture.new()
 	image.create(size.x, size.y, false, Image.FORMAT_RGBA8)
@@ -30,3 +32,6 @@ func update_texture() -> void:
 	if changed:
 		texture.set_data(image)
 		changed = false
+
+func _on_Show_toggled(button_pressed):
+	show = !button_pressed
