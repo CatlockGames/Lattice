@@ -37,6 +37,8 @@ func _process(delta) -> void:
 	
 	# Update prev mouse position
 	prev_mouse_pos = mouse_pos
+	
+	update_selected_layer()
 
 func _draw() -> void:
 	# Draw layers
@@ -48,6 +50,12 @@ func _draw() -> void:
 func update_background(zoom: Vector2) -> void:
 	background.rect_scale = zoom * background_scale
 	background.rect_size = size / zoom / background_scale
+
+func update_selected_layer() -> void:
+	for i in range(layers.get_child_count()):
+		if i != current_layer_index && layers.get_child(i).selected:
+			layers.get_child(current_layer_index).selected = false
+			current_layer_index = i
 
 func _on_ViewportContainer_mouse_entered() -> void:
 	focus = true
