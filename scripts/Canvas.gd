@@ -20,13 +20,38 @@ func _ready() -> void:
 	size = Vector2(16, 16)
 	layers.append(Layer.new(size))
 
+# warning-ignore:unused_argument
 func _process(delta) -> void:
 	var mouse_pos = get_local_mouse_position()
 	var mouse_in_layer := Rect2(Vector2.ZERO, size).has_point(mouse_pos)
 	
-	# Draw pixels
-	if Input.is_action_pressed("tool_primary") && mouse_in_layer:
-		layers[current_layer_index].set_pixel(mouse_pos.x, mouse_pos.y, foregroundPicker.color)
+	# Only use tools if the canvas is in focus
+	if focus:
+		if Input.is_action_pressed("tool_mod1"):
+			if Input.is_action_pressed("tool_primary"):
+				#current_tool.primary_mod1()
+				pass
+			if Input.is_action_pressed("tool_secondary"):
+				#current_tool.secondary_mod1()
+				pass
+		elif Input.is_action_pressed("tool_mod2"):
+			if Input.is_action_pressed("tool_primary"):
+				#current_tool.primary_mod2()
+				pass
+			if Input.is_action_pressed("tool_secondary"):
+				#current_tool.secondary_mod2()
+				pass
+		elif Input.is_action_pressed("tool_mod3"):
+			if Input.is_action_pressed("tool_primary"):
+				#current_tool.primary_mod3()
+				pass
+			if Input.is_action_pressed("tool_secondary"):
+				#current_tool.secondary_mod3()
+				pass
+			
+		if Input.is_action_pressed("tool_primary") && mouse_in_layer:
+			layers[current_layer_index].set_pixel(mouse_pos, foregroundPicker.color)
+			layers[current_layer_index].draw_line(prev_mouse_pos, mouse_pos, foregroundPicker.color)
 	
 	# Update layers textures as needed
 	for layer in layers:
