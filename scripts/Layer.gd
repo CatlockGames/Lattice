@@ -2,6 +2,7 @@ class_name Layer
 
 var image: Image
 var texture: ImageTexture
+var size: Vector2
 var show: bool
 var changed: bool
 
@@ -9,6 +10,7 @@ var changed: bool
 # Creates a new layer with the given size
 # Optionally set the fill color, default to transparent
 func _init(size: Vector2, fill := Color(1, 1, 1, 0)) -> void:
+	self.size = size
 	image = Image.new()
 	texture = ImageTexture.new()
 	image.create(int(size.x), int(size.y), false, Image.FORMAT_RGBA8)
@@ -17,16 +19,6 @@ func _init(size: Vector2, fill := Color(1, 1, 1, 0)) -> void:
 	texture.create_from_image(image, 0)
 	show = true
 	changed = false
-
-# Sets the given pixel to the given color
-func set_pixel(point: Vector2, color: Color) -> void:
-	var x := int(point.x)
-	var y := int(point.y)
-	image.lock()
-	if color != image.get_pixel(x, y):
-		image.set_pixel(x, y, color)
-		changed = true
-	image.unlock()
 
 # Draws a line from the given start point to end point with a color
 # https://en.wikipedia.org/wiki/Bresenham's_line_algorithm
@@ -42,9 +34,12 @@ func draw_line(start: Vector2, end: Vector2, color: Color) -> void:
 	var sy := 1 if y0 < y1 else -1
 	var error := dx + dy
 	
+	var size_rect := Rect2(Vector2.ZERO, size)
 	image.lock()
 	while x0 != x1 || y0 != y1:
-		image.set_pixel(x0, y0, color)
+		if size_rect.has_point(Vector2(x0, y0)):
+			image.set_pixel(x0, y0, color)
+			changed = true
 		var error2 = 2 * error
 		if error2 >= dy:
 			error += dy
@@ -52,8 +47,10 @@ func draw_line(start: Vector2, end: Vector2, color: Color) -> void:
 		if error2 <= dx:
 			error += dx
 			y0 += sy
+	if size_rect.has_point(Vector2(x0, y0)):
+		image.set_pixel(x0, y0, color)
+		changed = true
 	image.unlock()
-	changed = true
 
 # Updates the layers texture if any changes were made to its image
 func update_texture() -> void:

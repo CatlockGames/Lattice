@@ -17,13 +17,13 @@ func _ready() -> void:
 	background = get_node("../TransparentBackground")
 	background_scale = 10
 	
-	size = Vector2(16, 16)
+	size = Vector2(64, 64)
 	layers.append(Layer.new(size))
 
 # warning-ignore:unused_argument
 func _process(delta) -> void:
 	var mouse_pos = get_local_mouse_position()
-	var mouse_in_layer := Rect2(Vector2.ZERO, size).has_point(mouse_pos)
+	var mouse_in_layer := Rect2(Vector2.ZERO, size).has_point(mouse_pos) || Rect2(Vector2.ZERO, size).has_point(prev_mouse_pos)
 	
 	# Only use tools if the canvas is in focus
 	if focus:
@@ -48,12 +48,12 @@ func _process(delta) -> void:
 			if Input.is_action_pressed("tool_secondary"):
 				#current_tool.secondary_mod3()
 				pass
-			
+		
+		# Temporary default only draw tool
 		if Input.is_action_pressed("tool_primary") && mouse_in_layer:
-			layers[current_layer_index].set_pixel(mouse_pos, foregroundPicker.color)
 			layers[current_layer_index].draw_line(prev_mouse_pos, mouse_pos, foregroundPicker.color)
 	
-	# Update layers textures as needed
+	# Update layers textures after all/any changes
 	for layer in layers:
 		layer.update_texture()
 	
