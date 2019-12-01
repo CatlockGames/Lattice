@@ -154,6 +154,7 @@ size_flags_horizontal = 3
 split_offset = -150
 
 [node name="Center" type="VBoxContainer" parent="UI/MainPanel/Main/HSplitContainer"]
+editor/display_folded = true
 margin_right = 660.0
 margin_bottom = 516.0
 size_flags_horizontal = 3
@@ -220,15 +221,6 @@ script = ExtResource( 5 )
 current = true
 script = ExtResource( 6 )
 
-[node name="Control" type="Control" parent="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer/TabContainer"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
-
 [node name="AnimationPanel" type="PanelContainer" parent="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer"]
 editor/display_folded = true
 margin_top = 356.0
@@ -261,6 +253,7 @@ margin_bottom = 509.0
 split_offset = -300
 
 [node name="PalettePanel" type="PanelContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer"]
+editor/display_folded = true
 margin_right = 240.0
 margin_bottom = 130.0
 size_flags_vertical = 3
@@ -342,6 +335,7 @@ margin_right = 226.0
 margin_bottom = 22.0
 
 [node name="Buttons" type="HBoxContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/LayerMenuPanel/LayerMenu"]
+editor/display_folded = true
 margin_top = 26.0
 margin_right = 226.0
 margin_bottom = 42.0
@@ -385,13 +379,6 @@ margin_right = 226.0
 margin_bottom = 300.0
 
 [node name="Layers" type="VBoxContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/LayerMenuPanel/LayerMenu/LayerPanel/ScrollContainer"]
-
-[node name="Right" type="VBoxContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel"]
-visible = false
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 244.0
-margin_bottom = 509.0
 
 [node name="InfoPanel" type="PanelContainer" parent="UI"]
 editor/display_folded = true

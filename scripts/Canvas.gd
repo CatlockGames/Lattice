@@ -18,7 +18,7 @@ func _ready() -> void:
 	background = get_node("../TransparentBackground")
 	background_scale = 10
 	
-	size = Vector2(16, 16)
+	size = Vector2(64, 64)
 	layers = find_parent("Main").find_node("Layers")
 	_on_newLayer_pressed()
 
@@ -37,8 +37,6 @@ func _process(delta) -> void:
 	
 	# Update prev mouse position
 	prev_mouse_pos = mouse_pos
-	
-	update_selected_layer()
 
 func _draw() -> void:
 	# Draw layers
@@ -53,9 +51,8 @@ func update_background(zoom: Vector2) -> void:
 
 func update_selected_layer() -> void:
 	for i in range(layers.get_child_count()):
-		if i != current_layer_index && layers.get_child(i).selected:
-			layers.get_child(current_layer_index).selected = false
-			current_layer_index = i
+		if i != current_layer_index && layers.get_child(i).find_node("Name").pressed:
+			layers.get_child(i).find_node("Name").pressed = false
 
 func _on_ViewportContainer_mouse_entered() -> void:
 	focus = true
@@ -66,10 +63,17 @@ func _on_ViewportContainer_mouse_exited() -> void:
 func _on_newLayer_pressed():
 	var layer = layerScene.instance()
 	layers.add_child(layer)
-	current_layer_index = layers.get_child_count() - 1
-	layer.init(current_layer_index, size)
+	layer.init(layers.get_child_count() - 1, size)
+	layers.move_child(layers.get_child(layers.get_child_count() - 1), 0)
+	current_layer_index = 0
+	layers.get_child(0).find_node("Name").connect("toggled", find_parent("Main").find_node("Canvas"), "_on_Name_toggled", [layers.get_child(0)])
+	update_selected_layer()
 
 func _on_removeLayer_pressed():
 	if layers.get_child_count() > 1:
 		layers.remove_child(layers.get_child(current_layer_index))
-		current_layer_index -= 1
+
+func _on_Name_toggled(button_pressed: bool, layer: HBoxContainer):
+	if button_pressed:
+		current_layer_index = layer.get_index()
+		update_selected_layer()
