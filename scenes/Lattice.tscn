@@ -335,7 +335,6 @@ margin_right = 226.0
 margin_bottom = 22.0
 
 [node name="Buttons" type="HBoxContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/LayerMenuPanel/LayerMenu"]
-editor/display_folded = true
 margin_top = 26.0
 margin_right = 226.0
 margin_bottom = 42.0
@@ -379,6 +378,7 @@ margin_right = 226.0
 margin_bottom = 300.0
 
 [node name="Layers" type="VBoxContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/LayerMenuPanel/LayerMenu/LayerPanel/ScrollContainer"]
+custom_constants/separation = 10
 
 [node name="InfoPanel" type="PanelContainer" parent="UI"]
 editor/display_folded = true
@@ -406,3 +406,5 @@ text = "Info"
 [connection signal="item_selected" from="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/PalettePanel/Palette/Colors" to="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/PalettePanel" method="_on_Colors_item_selected"]
 [connection signal="pressed" from="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/LayerMenuPanel/LayerMenu/Buttons/newLayer" to="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer/TabContainer/ViewportContainer/Viewport/Canvas" method="_on_newLayer_pressed"]
 [connection signal="pressed" from="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/LayerMenuPanel/LayerMenu/Buttons/removeLayer" to="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer/TabContainer/ViewportContainer/Viewport/Canvas" method="_on_removeLayer_pressed"]
+[connection signal="pressed" from="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/LayerMenuPanel/LayerMenu/Buttons/duplicate" to="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer/TabContainer/ViewportContainer/Viewport/Canvas" method="_on_duplicate_pressed"]
+[connection signal="pressed" from="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/LayerMenuPanel/LayerMenu/Buttons/merge" to="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer/TabContainer/ViewportContainer/Viewport/Canvas" method="_on_merge_pressed"]

@@ -63,17 +63,34 @@ func _on_ViewportContainer_mouse_exited() -> void:
 func _on_newLayer_pressed():
 	var layer = layerScene.instance()
 	layers.add_child(layer)
-	layer.init(layers.get_child_count() - 1, size)
-	layers.move_child(layers.get_child(layers.get_child_count() - 1), 0)
-	current_layer_index = 0
-	layers.get_child(0).find_node("Name").connect("toggled", find_parent("Main").find_node("Canvas"), "_on_Name_toggled", [layers.get_child(0)])
+	
+	var layer_count = layers.get_child_count()
+	layer.init(layer_count - 1, size)
+	layers.move_child(layers.get_child(layer_count - 1), current_layer_index)
+	var curr_layer = layers.get_child(current_layer_index)
+	curr_layer.find_node("Name").connect("toggled", find_parent("Main").find_node("Canvas"), "_on_Name_toggled", [curr_layer])
 	update_selected_layer()
 
 func _on_removeLayer_pressed():
 	if layers.get_child_count() > 1:
 		layers.remove_child(layers.get_child(current_layer_index))
+		if current_layer_index == layers.get_child_count():
+			current_layer_index = layers.get_child_count() - 1
+		layers.get_child(current_layer_index).get_node("Name").pressed = true
 
 func _on_Name_toggled(button_pressed: bool, layer: HBoxContainer):
 	if button_pressed:
 		current_layer_index = layer.get_index()
 		update_selected_layer()
+	elif !button_pressed && (current_layer_index == layer.get_index()):
+		layer.get_node("Name").pressed = true;
+
+func _on_duplicate_pressed():
+#	layers.add_child(layers.get_child(current_layer_index).duplicate(0))
+#	layers.move_child(layers.get_child(layers.get_child_count() - 1), current_layer_index)
+#	layers.get_child(current_layer_index).get_node("Name").text += " copy"
+#	update_selected_layer()
+	pass
+
+func _on_merge_pressed():
+	pass # Replace with function body.

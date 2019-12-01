@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/Layer.gd" type="Script" id=1]
-[ext_resource path="res://assets/graphics/layers/show.png" type="Texture" id=2]
-[ext_resource path="res://assets/graphics/layers/hide.png" type="Texture" id=3]
-[ext_resource path="res://assets/graphics/palette/settings.png" type="Texture" id=4]
-[ext_resource path="res://assets/graphics/palette/settingsPressed.png" type="Texture" id=5]
+[ext_resource path="res://assets/graphics/layers/up.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/layers/upPressed.png" type="Texture" id=3]
+[ext_resource path="res://assets/graphics/layers/down.png" type="Texture" id=4]
+[ext_resource path="res://assets/graphics/layers/downPressed.png" type="Texture" id=5]
+[ext_resource path="res://assets/graphics/layers/show.png" type="Texture" id=6]
+[ext_resource path="res://assets/graphics/layers/hide.png" type="Texture" id=7]
+[ext_resource path="res://assets/graphics/palette/settings.png" type="Texture" id=8]
+[ext_resource path="res://assets/graphics/palette/settingsPressed.png" type="Texture" id=9]
 
 [node name="Layer" type="HBoxContainer"]
 margin_right = 252.0
@@ -12,31 +16,62 @@ margin_bottom = 16.0
 size_flags_horizontal = 3
 script = ExtResource( 1 )
 
-[node name="Show" type="TextureButton" parent="."]
+[node name="UpDown" type="VBoxContainer" parent="."]
+editor/display_folded = true
 margin_right = 16.0
-margin_bottom = 20.0
-toggle_mode = true
+margin_bottom = 24.0
+alignment = 1
+
+[node name="Up" type="TextureButton" parent="UpDown"]
+margin_right = 16.0
+margin_bottom = 10.0
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
+
+[node name="Down" type="TextureButton" parent="UpDown"]
+margin_top = 14.0
+margin_right = 16.0
+margin_bottom = 24.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
 
 [node name="VSeparator" type="VSeparator" parent="."]
 margin_left = 20.0
 margin_right = 24.0
-margin_bottom = 20.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( -825, 116 )
+
+[node name="Show" type="TextureButton" parent="."]
+margin_left = 28.0
+margin_right = 44.0
+margin_bottom = 24.0
+toggle_mode = true
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+
+[node name="VSeparator2" type="VSeparator" parent="."]
+margin_left = 48.0
+margin_right = 52.0
+margin_bottom = 24.0
 rect_pivot_offset = Vector2( -825, 116 )
 
 [node name="Settings" type="TextureButton" parent="."]
-margin_left = 28.0
-margin_right = 44.0
-margin_bottom = 20.0
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 5 )
+margin_left = 56.0
+margin_right = 72.0
+margin_bottom = 24.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 
 [node name="Name" type="Button" parent="."]
-margin_left = 48.0
-margin_right = 106.0
-margin_bottom = 20.0
+margin_left = 76.0
+margin_right = 134.0
+margin_bottom = 24.0
 toggle_mode = true
 pressed = true
 text = "Layer 0"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 138.0
+margin_right = 138.0
+margin_bottom = 24.0
 [connection signal="toggled" from="Show" to="." method="_on_Show_toggled"]
