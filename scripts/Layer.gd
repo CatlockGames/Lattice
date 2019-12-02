@@ -59,58 +59,71 @@ func draw_ellipse(center: Vector2, radius: Vector2, color: Color) -> void:
 	var cx := int(center.x)
 	var cy := int(center.y)
 	
-	var x := x_rad
-	var y := 0
-	var dx := y_rad * y_rad * (1 - 2 * x_rad)
-	var dy := x_rad * x_rad
-	var two_x_square := 2 * x_rad * x_rad
-	var two_y_square := 2 * y_rad * y_rad
-	var error := 0
-	var stop_x := two_y_square * x_rad
-	var stop_y := 0
-
-	while stop_x >= stop_y:
-		image.lock()
-		image.set_pixel(cx + x, cy + y, color)
-		image.set_pixel(cx - x, cy + y, color)
-		image.set_pixel(cx + x, cy - y, color)
-		image.set_pixel(cx - x, cy - y, color)
-		image.unlock()
-		y += 1
-		stop_y += two_x_square
-		error += dy
-		dy += two_x_square
-		if 2 * error + dx > 0:
-			x -= 1
-			stop_x -= two_y_square
-			error += dx
-			dx += two_y_square
-
-	x = 0
-	y = y_rad
-	dx = y_rad * y_rad
-	dy = x_rad * x_rad * (1 - 2 * y_rad)
-	error = 0
-	stop_x = 0
-	stop_y = two_x_square * y_rad
-	while stop_x <= stop_y:
-		image.lock()
-		image.set_pixel(cx + x, cy + y, color)
-		image.set_pixel(cx - x, cy + y, color)
-		image.set_pixel(cx + x, cy - y, color)
-		image.set_pixel(cx - x, cy - y, color)
-		image.unlock()
-		x += 1
-		stop_x += two_y_square
-		error += dx
-		dx += two_y_square
-		if 2 * error + dy > 0:
-			y -= 1
-			stop_y -= two_x_square
+	if x_rad == 0 || y_rad == 0: # Just a line
+		draw_line(center + radius, center - radius, color)
+	elif x_rad == 1: # Thin vertical ellipse
+		draw_line(Vector2(center.x, center.y + radius.y), Vector2(center.x, center.y + radius.y), color)
+		draw_line(Vector2(center.x, center.y - radius.y), Vector2(center.x, center.y - radius.y), color)
+		draw_line(Vector2(center.x + 1, center.y + radius.y - 1), Vector2(center.x + 1, center.y - radius.y + 1), color)
+		draw_line(Vector2(center.x - 1, center.y + radius.y - 1), Vector2(center.x - 1, center.y - radius.y + 1), color)
+	elif y_rad == 1: # Thin horizontal ellipse
+		draw_line(Vector2(center.x + radius.x, center.y), Vector2(center.x + radius.x, center.y), color)
+		draw_line(Vector2(center.x - radius.x, center.y), Vector2(center.x - radius.x, center.y), color)
+		draw_line(Vector2(center.x + radius.x - 1, center.y + 1), Vector2(center.x - radius.x + 1, center.y + 1), color)
+		draw_line(Vector2(center.x + radius.x - 1, center.y - 1), Vector2(center.x - radius.x + 1, center.y - 1), color)
+	else: # Normal ellipse algorithm
+		changed = true
+		var x := x_rad
+		var y := 0
+		var dx := y_rad * y_rad * (1 - 2 * x_rad)
+		var dy := x_rad * x_rad
+		var two_x_square := 2 * x_rad * x_rad
+		var two_y_square := 2 * y_rad * y_rad
+		var error := 0
+		var stop_x := two_y_square * x_rad
+		var stop_y := 0
+	
+		while stop_x >= stop_y:
+			image.lock()
+			image.set_pixel(cx + x, cy + y, color)
+			image.set_pixel(cx - x, cy + y, color)
+			image.set_pixel(cx + x, cy - y, color)
+			image.set_pixel(cx - x, cy - y, color)
+			image.unlock()
+			y += 1
+			stop_y += two_x_square
 			error += dy
 			dy += two_x_square
+			if 2 * error + dx > 0:
+				x -= 1
+				stop_x -= two_y_square
+				error += dx
+				dx += two_y_square
 	
-	changed = true
+		x = 0
+		y = y_rad
+		dx = y_rad * y_rad
+		dy = x_rad * x_rad * (1 - 2 * y_rad)
+		error = 0
+		stop_x = 0
+		stop_y = two_x_square * y_rad
+		
+		while stop_x <= stop_y:
+			image.lock()
+			image.set_pixel(cx + x, cy + y, color)
+			image.set_pixel(cx - x, cy + y, color)
+			image.set_pixel(cx + x, cy - y, color)
+			image.set_pixel(cx - x, cy - y, color)
+			image.unlock()
+			x += 1
+			stop_x += two_y_square
+			error += dx
+			dx += two_y_square
+			if 2 * error + dy > 0:
+				y -= 1
+				stop_y -= two_x_square
+				error += dy
+				dy += two_x_square
 
 # Updates the layers texture if any changes were made to its image
 func update_texture() -> void:
