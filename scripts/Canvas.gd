@@ -17,7 +17,7 @@ func _ready() -> void:
 	background = get_node("../TransparentBackground")
 	background_scale = 10
 	
-	size = Vector2(16, 16)
+	size = Vector2(64, 64)
 	layers.append(Layer.new(size))
 
 func _process(delta) -> void:
