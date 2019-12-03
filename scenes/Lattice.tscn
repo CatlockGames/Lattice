@@ -242,7 +242,7 @@ split_offset = -300
 
 [node name="PalettePanel" type="PanelContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer"]
 margin_right = 240.0
-margin_bottom = 130.0
+margin_bottom = 116.0
 size_flags_vertical = 3
 script = ExtResource( 7 )
 
@@ -250,7 +250,7 @@ script = ExtResource( 7 )
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 233.0
-margin_bottom = 123.0
+margin_bottom = 109.0
 
 [node name="Label" type="Label" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/PalettePanel/Palette"]
 margin_right = 226.0
@@ -291,7 +291,7 @@ texture_pressed = ExtResource( 13 )
 [node name="Colors" type="ItemList" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/PalettePanel/Palette"]
 margin_top = 46.0
 margin_right = 226.0
-margin_bottom = 116.0
+margin_bottom = 102.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 max_columns = 0
@@ -299,7 +299,7 @@ same_column_width = true
 icon_mode = 0
 
 [node name="LayerMenuPanel" type="PanelContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer"]
-margin_top = 142.0
+margin_top = 128.0
 margin_right = 240.0
 margin_bottom = 502.0
 
@@ -307,7 +307,7 @@ margin_bottom = 502.0
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 233.0
-margin_bottom = 353.0
+margin_bottom = 367.0
 
 [node name="Label" type="Label" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/LayerMenuPanel/LayerMenu"]
 margin_right = 226.0
@@ -354,14 +354,14 @@ texture_pressed = ExtResource( 21 )
 [node name="LayerPanel" type="PanelContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/LayerMenuPanel/LayerMenu"]
 margin_top = 46.0
 margin_right = 226.0
-margin_bottom = 346.0
+margin_bottom = 360.0
 size_flags_vertical = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/LayerMenuPanel/LayerMenu/LayerPanel"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 219.0
-margin_bottom = 293.0
+margin_bottom = 307.0
 
 [node name="Layers" type="VBoxContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/LayerMenuPanel/LayerMenu/LayerPanel/ScrollContainer"]
 margin_right = 212.0

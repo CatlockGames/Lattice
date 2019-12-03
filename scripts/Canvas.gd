@@ -21,6 +21,7 @@ func _ready() -> void:
 	size = Vector2(16, 16)
 	layers = find_parent("Main").find_node("Layers")
 	_on_newLayer_pressed()
+	layers.get_child(current_layer_index).find_node("Name").pressed = true
 
 func _process(delta) -> void:
 	update()
@@ -49,12 +50,6 @@ func update_background(zoom: Vector2) -> void:
 	background.rect_scale = zoom * background_scale
 	background.rect_size = size / zoom / background_scale
 
-# Updates which layer is currently selected
-func update_selected_layer() -> void:
-	for i in range(layers.get_child_count()):
-		if i != current_layer_index && layers.get_child(i).find_node("Name").pressed:
-			layers.get_child(i).find_node("Name").pressed = false
-
 func _on_ViewportContainer_mouse_entered() -> void:
 	focus = true
 
@@ -67,10 +62,11 @@ func _on_newLayer_pressed():
 	layers.add_child(layer)
 	var layer_count = layers.get_child_count()
 	layer.init(layer_count - 1, size)
+	layers.get_child(current_layer_index).find_node("Name").pressed = false
 	layers.move_child(layers.get_child(layer_count - 1), current_layer_index)
 	var curr_layer = layers.get_child(current_layer_index)
 	curr_layer.find_node("Name").connect("toggled", self, "_on_Name_toggled", [curr_layer])
-	update_selected_layer()
+	#update_selected_layer()
 
 # Removes the currently selected layer
 func _on_removeLayer_pressed():
@@ -103,7 +99,7 @@ func _on_merge_pressed():
 
 func _on_Name_toggled(button_pressed: bool, layer: HBoxContainer):
 	if button_pressed:
+		layers.get_child(current_layer_index).find_node("Name").pressed = false
 		current_layer_index = layer.get_index()
-		update_selected_layer()
 	elif !button_pressed && (current_layer_index == layer.get_index()):
 		layer.get_node("Name").pressed = true
