@@ -18,7 +18,7 @@ func _ready() -> void:
 	background = get_node("../TransparentBackground")
 	background_scale = 10
 	
-	size = Vector2(64, 64)
+	size = Vector2(16, 16)
 	layers = find_parent("Main").find_node("Layers")
 	_on_newLayer_pressed()
 
@@ -68,7 +68,8 @@ func _on_newLayer_pressed():
 	layer.init(layer_count - 1, size)
 	layers.move_child(layers.get_child(layer_count - 1), current_layer_index)
 	var curr_layer = layers.get_child(current_layer_index)
-	curr_layer.find_node("Name").connect("toggled", find_parent("Main").find_node("Canvas"), "_on_Name_toggled", [curr_layer])
+	
+	curr_layer.find_node("Name").connect("toggled", self, "_on_Name_toggled", [curr_layer])
 	update_selected_layer()
 
 func _on_removeLayer_pressed():
@@ -78,19 +79,26 @@ func _on_removeLayer_pressed():
 			current_layer_index = layers.get_child_count() - 1
 		layers.get_child(current_layer_index).get_node("Name").pressed = true
 
+func _on_duplicate_pressed():
+	var old_layer = layers.get_child(current_layer_index)
+	_on_newLayer_pressed()
+	var new_layer = layers.get_child(current_layer_index)
+	new_layer.image.copy_from(old_layer.image)
+	new_layer.changed = true
+	new_layer.get_node("Name").text = old_layer.get_node("Name").text + " copy"
+
+func _on_merge_pressed():
+	if current_layer_index != layers.get_child_count() - 1:
+		var old_layer = layers.get_child(current_layer_index)
+		layers.remove_child(old_layer)
+		var new_layer = layers.get_child(current_layer_index)
+		new_layer.get_node("Name").pressed = true
+		new_layer.image.blend_rect(old_layer.image, Rect2(Vector2.ZERO, size), Vector2.ZERO)
+		new_layer.changed = true
+
 func _on_Name_toggled(button_pressed: bool, layer: HBoxContainer):
 	if button_pressed:
 		current_layer_index = layer.get_index()
 		update_selected_layer()
 	elif !button_pressed && (current_layer_index == layer.get_index()):
-		layer.get_node("Name").pressed = true;
-
-func _on_duplicate_pressed():
-#	layers.add_child(layers.get_child(current_layer_index).duplicate(0))
-#	layers.move_child(layers.get_child(layers.get_child_count() - 1), current_layer_index)
-#	layers.get_child(current_layer_index).get_node("Name").text += " copy"
-#	update_selected_layer()
-	pass
-
-func _on_merge_pressed():
-	pass # Replace with function body.
+		layer.get_node("Name").pressed = true
