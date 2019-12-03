@@ -1,5 +1,4 @@
 extends HBoxContainer
-class_name Layer
 
 var size: Vector2
 var image: Image
@@ -13,8 +12,10 @@ var preview_texture: ImageTexture
 # Creates a new layer with the given size
 # Optionally set the fill color, default to transparent
 func init(index: int, size: Vector2, fill := Color(1, 1, 1, 0)) -> void:
-	self.size = size
 	$Name.text = "Layer %d" % index
+	self.size = size
+	
+	# Initialize canvas image
 	image = Image.new()
 	texture = ImageTexture.new()
 	image.create(size.x, size.y, false, Image.FORMAT_RGBA8)
@@ -23,6 +24,8 @@ func init(index: int, size: Vector2, fill := Color(1, 1, 1, 0)) -> void:
 	texture.create_from_image(image, 0)
 	show = true
 	changed = false
+	
+	# Initialize preview image
 	preview_image = Image.new()
 	preview_image.create(size.x, size.y, false, Image.FORMAT_RGBA8)
 	preview_texture = ImageTexture.new()
@@ -43,6 +46,7 @@ func update_texture() -> void:
 		changed = false
 		update_preview()
 
+# Updates the preview image for each layer from the canvas
 func update_preview() -> void:
 	preview_image.fill(Color.white)
 	preview_image.blend_rect(image, Rect2(Vector2.ZERO, size), Vector2.ZERO)

@@ -238,11 +238,13 @@ margin_bottom = 64.0
 text = "Animation"
 
 [node name="RightPanel" type="PanelContainer" parent="UI/MainPanel/Main/HSplitContainer"]
+editor/display_folded = true
 margin_left = 684.0
 margin_right = 938.0
 margin_bottom = 516.0
 
 [node name="VSplitContainer" type="VSplitContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel"]
+editor/display_folded = true
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 247.0
@@ -311,6 +313,7 @@ same_column_width = true
 icon_mode = 0
 
 [node name="LayerMenuPanel" type="PanelContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer"]
+editor/display_folded = true
 margin_top = 142.0
 margin_right = 240.0
 margin_bottom = 502.0
