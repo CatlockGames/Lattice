@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scripts/ToolPanel.gd" type="Script" id=1]
 [ext_resource path="res://assets/graphics/toolPanel/swap.png" type="Texture" id=2]
@@ -13,22 +13,14 @@
 [ext_resource path="res://assets/graphics/Palette/removePressed.png" type="Texture" id=11]
 [ext_resource path="res://assets/graphics/Palette/settings.png" type="Texture" id=12]
 [ext_resource path="res://assets/graphics/Palette/settingsPressed.png" type="Texture" id=13]
-[ext_resource path="res://assets/graphics/palette/selected.png" type="Texture" id=14]
-[ext_resource path="res://assets/graphics/palette/add.png" type="Texture" id=15]
-[ext_resource path="res://assets/graphics/palette/addPressed.png" type="Texture" id=16]
-[ext_resource path="res://assets/graphics/palette/remove.png" type="Texture" id=17]
-[ext_resource path="res://assets/graphics/palette/removePressed.png" type="Texture" id=18]
-[ext_resource path="res://assets/graphics/layers/duplicate.png" type="Texture" id=19]
-[ext_resource path="res://assets/graphics/layers/duplicatePressed.png" type="Texture" id=20]
-[ext_resource path="res://assets/graphics/layers/merge.png" type="Texture" id=21]
-[ext_resource path="res://assets/graphics/layers/mergePressed.png" type="Texture" id=22]
-
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 14 )
-region_rect = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.172549, 0.164706, 0.196078, 1 )
+[ext_resource path="res://assets/graphics/palette/add.png" type="Texture" id=14]
+[ext_resource path="res://assets/graphics/palette/addPressed.png" type="Texture" id=15]
+[ext_resource path="res://assets/graphics/palette/remove.png" type="Texture" id=16]
+[ext_resource path="res://assets/graphics/palette/removePressed.png" type="Texture" id=17]
+[ext_resource path="res://assets/graphics/layers/duplicate.png" type="Texture" id=18]
+[ext_resource path="res://assets/graphics/layers/duplicatePressed.png" type="Texture" id=19]
+[ext_resource path="res://assets/graphics/layers/merge.png" type="Texture" id=20]
+[ext_resource path="res://assets/graphics/layers/mergePressed.png" type="Texture" id=21]
 
 [node name="Lattice" type="Control"]
 anchor_right = 1.0
@@ -106,7 +98,6 @@ margin_right = 54.0
 margin_bottom = 22.0
 
 [node name="FGBG" type="HBoxContainer" parent="UI/MainPanel/Main/ToolPanel/Tools"]
-editor/display_folded = true
 margin_top = 26.0
 margin_right = 54.0
 margin_bottom = 46.0
@@ -238,13 +229,11 @@ margin_bottom = 64.0
 text = "Animation"
 
 [node name="RightPanel" type="PanelContainer" parent="UI/MainPanel/Main/HSplitContainer"]
-editor/display_folded = true
 margin_left = 684.0
 margin_right = 938.0
 margin_bottom = 516.0
 
 [node name="VSplitContainer" type="VSplitContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel"]
-editor/display_folded = true
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 247.0
@@ -252,14 +241,12 @@ margin_bottom = 509.0
 split_offset = -300
 
 [node name="PalettePanel" type="PanelContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer"]
-editor/display_folded = true
 margin_right = 240.0
 margin_bottom = 130.0
 size_flags_vertical = 3
 script = ExtResource( 7 )
 
 [node name="Palette" type="VBoxContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/PalettePanel"]
-editor/display_folded = true
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 233.0
@@ -307,13 +294,11 @@ margin_right = 226.0
 margin_bottom = 116.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/selected_focus = SubResource( 1 )
 max_columns = 0
 same_column_width = true
 icon_mode = 0
 
 [node name="LayerMenuPanel" type="PanelContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer"]
-editor/display_folded = true
 margin_top = 142.0
 margin_right = 240.0
 margin_bottom = 502.0
@@ -342,43 +327,44 @@ margin_bottom = 42.0
 [node name="newLayer" type="TextureButton" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/LayerMenuPanel/LayerMenu/Buttons"]
 margin_right = 16.0
 margin_bottom = 16.0
-texture_normal = ExtResource( 15 )
-texture_pressed = ExtResource( 16 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
 
 [node name="removeLayer" type="TextureButton" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/LayerMenuPanel/LayerMenu/Buttons"]
 margin_left = 20.0
 margin_right = 36.0
 margin_bottom = 16.0
-texture_normal = ExtResource( 17 )
-texture_pressed = ExtResource( 18 )
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 17 )
 
 [node name="duplicate" type="TextureButton" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/LayerMenuPanel/LayerMenu/Buttons"]
 margin_left = 40.0
 margin_right = 56.0
 margin_bottom = 16.0
-texture_normal = ExtResource( 19 )
-texture_pressed = ExtResource( 20 )
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 19 )
 
 [node name="merge" type="TextureButton" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/LayerMenuPanel/LayerMenu/Buttons"]
 margin_left = 60.0
 margin_right = 76.0
 margin_bottom = 16.0
-texture_normal = ExtResource( 21 )
-texture_pressed = ExtResource( 22 )
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 21 )
 
 [node name="LayerPanel" type="PanelContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/LayerMenuPanel/LayerMenu"]
 margin_top = 46.0
 margin_right = 226.0
 margin_bottom = 346.0
 size_flags_vertical = 3
-custom_styles/panel = SubResource( 2 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/LayerMenuPanel/LayerMenu/LayerPanel"]
-margin_right = 226.0
-margin_bottom = 300.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 219.0
+margin_bottom = 293.0
 
 [node name="Layers" type="VBoxContainer" parent="UI/MainPanel/Main/HSplitContainer/RightPanel/VSplitContainer/LayerMenuPanel/LayerMenu/LayerPanel/ScrollContainer"]
-margin_right = 226.0
+margin_right = 212.0
 size_flags_horizontal = 3
 
 [node name="InfoPanel" type="PanelContainer" parent="UI"]
