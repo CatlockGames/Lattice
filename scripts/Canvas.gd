@@ -61,7 +61,7 @@ func _on_newLayer_pressed():
 	var layer = layerScene.instance()
 	layers.add_child(layer)
 	var layer_count = layers.get_child_count()
-	layer.init(layer_count - 1, size)
+	layer.init("Layer %d" % (layers.get_child_count() - 1), size)
 	layers.get_child(current_layer_index).find_node("Name").pressed = false
 	layers.move_child(layers.get_child(layer_count - 1), current_layer_index)
 	var curr_layer = layers.get_child(current_layer_index)
