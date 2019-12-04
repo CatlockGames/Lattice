@@ -195,9 +195,8 @@ handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="TransparentBackground" type="TextureRect" parent="UI/MainPanel/Main/HSplitContainer/Center/VSplitContainer/TabContainer/ViewportContainer/Viewport"]
-margin_right = 10.0
-margin_bottom = 10.0
-rect_scale = Vector2( 2, 2 )
+margin_right = 2.0
+margin_bottom = 2.0
 mouse_filter = 2
 texture = ExtResource( 4 )
 stretch_mode = 2
@@ -368,7 +367,6 @@ margin_right = 212.0
 size_flags_horizontal = 3
 
 [node name="InfoPanel" type="PanelContainer" parent="UI"]
-editor/display_folded = true
 margin_top = 572.0
 margin_right = 1024.0
 margin_bottom = 600.0
