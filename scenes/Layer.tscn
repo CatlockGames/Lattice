@@ -10,6 +10,7 @@
 margin_right = 252.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( 1 )
 
 [node name="Show" type="TextureButton" parent="."]
@@ -51,4 +52,8 @@ margin_left = 228.0
 margin_right = 252.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
+
+[node name="PreviewBackground" type="ColorRect" parent="Preview"]
+show_behind_parent = true
+margin_bottom = 24.0
 [connection signal="toggled" from="Show" to="." method="_on_Show_toggled"]

@@ -11,8 +11,8 @@ var preview_texture: ImageTexture
 # Layer constructor
 # Creates a new layer with the given size
 # Optionally set the fill color, default to transparent
-func init(index: int, size: Vector2, fill := Color(1, 1, 1, 0)) -> void:
-	$Name.text = "Layer %d" % index
+func init(name: String, size: Vector2, fill := Color(1, 1, 1, 0)) -> void:
+	$Name.text = name
 	self.size = size
 	
 	# Initialize canvas image
@@ -48,11 +48,13 @@ func update_texture() -> void:
 
 # Updates the preview image for each layer from the canvas
 func update_preview() -> void:
-	preview_image.fill(Color.white)
-	preview_image.blend_rect(image, Rect2(Vector2.ZERO, size), Vector2.ZERO)
+	preview_image.copy_from(image)
 	preview_texture.set_data(preview_image)
-	preview_texture.set_size_override(Vector2(32 * size.aspect(), 32))
+	var new_size = Vector2(32 * size.aspect(), 32)
+	preview_texture.set_size_override(new_size)
 	$Preview.texture = preview_texture
+	$Preview/PreviewBackground.rect_size = new_size
+	changed = true
 
 func _on_Show_toggled(button_pressed):
 	show = !button_pressed

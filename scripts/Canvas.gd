@@ -60,23 +60,19 @@ func _on_ViewportContainer_mouse_exited() -> void:
 func _on_newLayer_pressed():
 	var layer = layerScene.instance()
 	layers.add_child(layer)
-	var layer_count = layers.get_child_count()
 	layer.init("Layer %d" % (layers.get_child_count() - 1), size)
 	layers.get_child(current_layer_index).find_node("Name").pressed = false
-	layers.move_child(layers.get_child(layer_count - 1), current_layer_index)
+	layers.move_child(layers.get_child(layers.get_child_count() - 1), current_layer_index)
 	var curr_layer = layers.get_child(current_layer_index)
 	curr_layer.find_node("Name").connect("toggled", self, "_on_Name_toggled", [curr_layer])
-	#update_selected_layer()
 
 # Removes the currently selected layer
 func _on_removeLayer_pressed():
 	if layers.get_child_count() > 1:
-		var curr_layer = layers.get_child(current_layer_index)
-		var child_count = layers.get_child_count()
-		layers.remove_child(curr_layer)
-		if current_layer_index == child_count:
-			current_layer_index = child_count - 1
-		curr_layer.get_node("Name").pressed = true
+		layers.remove_child(layers.get_child(current_layer_index))
+		if current_layer_index == layers.get_child_count():
+			current_layer_index = layers.get_child_count() - 1
+		layers.get_child(current_layer_index).get_node("Name").pressed = true
 
 # Duplicates the currently selected layer
 func _on_duplicate_pressed():
