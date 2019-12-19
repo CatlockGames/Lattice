@@ -18,7 +18,7 @@ func _ready() -> void:
 	background = get_node("../TransparentBackground")
 	background_scale = 10
 	
-	size = Vector2(16, 16)
+	size = Vector2(64, 64)
 	layers = find_parent("Main").find_node("Layers")
 	_on_newLayer_pressed()
 	layers.get_child(current_layer_index).find_node("Name").pressed = true
@@ -55,10 +55,10 @@ func _process(delta) -> void:
 		
 		# Temporary default only draw tool
 		if Input.is_action_pressed("tool_primary") && mouse_in_layer:
-			layers[current_layer_index].draw_line(prev_mouse_pos, mouse_pos, foregroundPicker.color)
+			layers.get_child(current_layer_index).draw_sline(prev_mouse_pos, mouse_pos, foregroundPicker.color)
 	
 	# Update layers textures after all/any changes
-	for layer in layers:
+	for layer in layers.get_children():
 		layer.update_texture()
 	
 	# Update prev mouse position

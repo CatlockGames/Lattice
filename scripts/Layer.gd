@@ -1,6 +1,5 @@
 extends HBoxContainer
 
-var size: Vector2
 var image: Image
 var texture: ImageTexture
 var size: Vector2
@@ -35,18 +34,18 @@ func init(name: String, size: Vector2, fill := Color(1, 1, 1, 0)) -> void:
 
 # Draws a line from the given start point to end point with a color
 # https://en.wikipedia.org/wiki/Bresenham's_line_algorithm
-func draw_line(start: Vector2, end: Vector2, color: Color) -> void:
+func draw_sline(start: Vector2, end: Vector2, color: Color) -> void:
 	var x0 := int(start.x)
 	var y0 := int(start.y)
 	var x1 := int(end.x)
 	var y1 := int(end.y)
-	
+
 	var dx := abs(x1 - x0)
 	var dy := -abs(y1 - y0)
 	var sx := 1 if x0 < x1 else -1
 	var sy := 1 if y0 < y1 else -1
 	var error := dx + dy
-	
+
 	var size_rect := Rect2(Vector2.ZERO, size)
 	image.lock()
 	while x0 != x1 || y0 != y1:
@@ -73,17 +72,17 @@ func draw_ellipse(center: Vector2, radius: Vector2, color: Color) -> void:
 	var cy := int(center.y)
 	
 	if x_rad == 0 || y_rad == 0: # Just a line
-		draw_line(center + radius, center - radius, color)
+		draw_sline(center + radius, center - radius, color)
 	elif x_rad == 1: # Thin vertical ellipse
-		draw_line(Vector2(center.x, center.y + radius.y), Vector2(center.x, center.y + radius.y), color)
-		draw_line(Vector2(center.x, center.y - radius.y), Vector2(center.x, center.y - radius.y), color)
-		draw_line(Vector2(center.x + 1, center.y + radius.y - 1), Vector2(center.x + 1, center.y - radius.y + 1), color)
-		draw_line(Vector2(center.x - 1, center.y + radius.y - 1), Vector2(center.x - 1, center.y - radius.y + 1), color)
+		draw_sline(Vector2(center.x, center.y + radius.y), Vector2(center.x, center.y + radius.y), color)
+		draw_sline(Vector2(center.x, center.y - radius.y), Vector2(center.x, center.y - radius.y), color)
+		draw_sline(Vector2(center.x + 1, center.y + radius.y - 1), Vector2(center.x + 1, center.y - radius.y + 1), color)
+		draw_sline(Vector2(center.x - 1, center.y + radius.y - 1), Vector2(center.x - 1, center.y - radius.y + 1), color)
 	elif y_rad == 1: # Thin horizontal ellipse
-		draw_line(Vector2(center.x + radius.x, center.y), Vector2(center.x + radius.x, center.y), color)
-		draw_line(Vector2(center.x - radius.x, center.y), Vector2(center.x - radius.x, center.y), color)
-		draw_line(Vector2(center.x + radius.x - 1, center.y + 1), Vector2(center.x - radius.x + 1, center.y + 1), color)
-		draw_line(Vector2(center.x + radius.x - 1, center.y - 1), Vector2(center.x - radius.x + 1, center.y - 1), color)
+		draw_sline(Vector2(center.x + radius.x, center.y), Vector2(center.x + radius.x, center.y), color)
+		draw_sline(Vector2(center.x - radius.x, center.y), Vector2(center.x - radius.x, center.y), color)
+		draw_sline(Vector2(center.x + radius.x - 1, center.y + 1), Vector2(center.x - radius.x + 1, center.y + 1), color)
+		draw_sline(Vector2(center.x + radius.x - 1, center.y - 1), Vector2(center.x - radius.x + 1, center.y - 1), color)
 	else: # Normal ellipse algorithm
 		changed = true
 		var x := x_rad
