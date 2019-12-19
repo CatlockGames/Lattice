@@ -18,21 +18,46 @@ func _ready() -> void:
 	background = get_node("../TransparentBackground")
 	background_scale = 10
 	
-	size = Vector2(16, 16)
+	size = Vector2(64, 64)
 	layers = find_parent("Main").find_node("Layers")
 	_on_newLayer_pressed()
 	layers.get_child(current_layer_index).find_node("Name").pressed = true
 
+# warning-ignore:unused_argument
 func _process(delta) -> void:
 	update()
 	var mouse_pos = get_local_mouse_position()
-	var mouse_in_layer := Rect2(Vector2.ZERO, size).has_point(mouse_pos)
+	var mouse_in_layer := Rect2(Vector2.ZERO, size).has_point(mouse_pos) || Rect2(Vector2.ZERO, size).has_point(prev_mouse_pos)
 	
-	# Draw pixels
-	if Input.is_action_pressed("tool_primary") && mouse_in_layer:
-		layers.get_child(current_layer_index).set_pixel(mouse_pos.x, mouse_pos.y, foregroundPicker.color)
+	# Only use tools if the canvas is in focus
+	if focus:
+		if Input.is_action_pressed("tool_mod1"):
+			if Input.is_action_pressed("tool_primary"):
+				#current_tool.primary_mod1()
+				pass
+			if Input.is_action_pressed("tool_secondary"):
+				#current_tool.secondary_mod1()
+				pass
+		elif Input.is_action_pressed("tool_mod2"):
+			if Input.is_action_pressed("tool_primary"):
+				#current_tool.primary_mod2()
+				pass
+			if Input.is_action_pressed("tool_secondary"):
+				#current_tool.secondary_mod2()
+				pass
+		elif Input.is_action_pressed("tool_mod3"):
+			if Input.is_action_pressed("tool_primary"):
+				#current_tool.primary_mod3()
+				pass
+			if Input.is_action_pressed("tool_secondary"):
+				#current_tool.secondary_mod3()
+				pass
+		
+		# Temporary default only draw tool
+		if Input.is_action_pressed("tool_primary") && mouse_in_layer:
+			layers.get_child(current_layer_index).draw_sline(prev_mouse_pos, mouse_pos, foregroundPicker.color)
 	
-	# Update layers textures as needed
+	# Update layers textures after all/any changes
 	for layer in layers.get_children():
 		layer.update_texture()
 	
