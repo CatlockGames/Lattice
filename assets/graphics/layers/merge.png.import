@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/selected.png-65c4563c96171cc53ffb0d3e231e6b6f.stex"
+path="res://.import/merge.png-8ca0612bdaa2c77564975ae6759cbdab.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/toolPanel/selected.png"
-dest_files=[ "res://.import/selected.png-65c4563c96171cc53ffb0d3e231e6b6f.stex" ]
+source_file="res://assets/graphics/layers/merge.png"
+dest_files=[ "res://.import/merge.png-8ca0612bdaa2c77564975ae6759cbdab.stex" ]
 
 [params]
 
